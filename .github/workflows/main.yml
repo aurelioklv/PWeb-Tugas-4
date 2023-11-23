@@ -5,20 +5,13 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v3
-
-      - name: 📂 Deploy to domain 1
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER_1 }}
-          username: ${{ secrets.FTP_USERNAME_1 }}
-          password: ${{ secrets.FTP_PASSWORD_1 }}
-
-      - name: 📂 Deploy to domain 2
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER_2 }}
-          username: ${{ secrets.FTP_USERNAME_2 }}
-          password: ${{ secrets.FTP_PASSWORD_2 }}
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           server-dir: tugas-4-login-page/
